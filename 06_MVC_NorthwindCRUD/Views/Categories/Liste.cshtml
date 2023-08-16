@@ -1,0 +1,53 @@
+﻿
+@model CategoriesModel
+
+<h2>Kategori Listesi</h2>
+<form asp-action="Liste" asp-asp-controller="Categories" class="d-inline-flex">
+    <input type="search" class="form-control" placeholder="Arama" name="name"/>
+    <button type="submit" class="btn btn-success">Ara</button>
+</form>
+<hr />
+@if (TempData["mesaj"] != null)
+{
+    <div class="alert alert-danger">@TempData["mesaj"]</div>
+
+}
+<a class="btn btn-info float-end" asp-action="Ekle" asp-asp-controller="Categories">Yeni Kayıt</a>
+<hr />
+<table class="table table-bordered table-hover table-responsive">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(m=>m.Category.CategoryId)</th>
+            <th>@Html.DisplayNameFor(m=>m.Category.CategoryName)</th>
+            <th>@Html.DisplayNameFor(m=>m.Category.Description)</th>
+            <th>Detay</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.clist)
+        {
+            <tr>
+                <td>@item.CategoryId</td>
+                <td>@item.CategoryName</td>
+                <td>@item.Description</td>
+                <td class="text-center">
+                    <a asp-action="Detay" asp-controller="Categories" asp-route-id="@item.CategoryId">
+                        <i class="fas fa-search"></i>
+                    </a>
+                </td>
+                <td class="text-center ">
+                    <a asp-action="Güncelle" asp-controller="Categories" asp-route-id="@item.CategoryId">
+                        <i class="fas fa-pen-alt text-success"></i>
+                    </a>
+                </td>
+                <td class="text-center ">
+                    <a asp-action="Sil" asp-controller="Categories" asp-route-id="@item.CategoryId">
+                        <i class="fas fa-trash-alt text-danger"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

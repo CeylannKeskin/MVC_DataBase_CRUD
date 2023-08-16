@@ -1,0 +1,13 @@
+﻿@model CategoriesModel
+
+<h2>Detay</h2>
+<hr />
+<dl class="dl-horizontal">
+    <dt>@Html.DisplayNameFor(x=>x.Category.CategoryId)</dt>
+    <dd>@Html.DisplayFor(x=>x.Category.CategoryId)</dd>
+    <dt>@Html.DisplayNameFor(x=>x.Category.CategoryName)</dt>
+    <dd>@Html.DisplayFor(x=>x.Category.CategoryName)</dd>
+    <dt>@Html.DisplayNameFor(x=>x.Category.Description)</dt>
+    <dd>@Html.DisplayFor(x=>x.Category.Description)</dd>
+</dl>
+@Html.ActionLink("Listeye Geri Dön","Liste")
